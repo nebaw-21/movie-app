@@ -1,0 +1,3 @@
+const REACT_APP_TMDB_API_KEY = '99ce8a18cb315619a53bbf358fc74d2e';
+
+ export default REACT_APP_TMDB_API_KEY;
