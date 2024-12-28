@@ -13,6 +13,10 @@ export const apiSlice = createApi({
     getMovie: builder.query({
       query: (id) => `movie/${id}?api_key=${apiKey}`,
     }),
+    getNewMovies: builder.query({
+      query: () => `/movie/latest?api_key=${apiKey}`,
+    }),
+
     getRecommendedMovie: builder.query({
       query: (movieId) => `movie/${movieId}/recommendations?api_key=${apiKey}`,
     }),
@@ -25,6 +29,6 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetAllMoviesQuery, useGetMovieQuery, useSearchMoviesQuery, useGetRecommendedMovieQuery, useGetMoviesByGenresQuery } = apiSlice;
+export const { useGetAllMoviesQuery, useGetMovieQuery, useSearchMoviesQuery, useGetRecommendedMovieQuery, useGetMoviesByGenresQuery,useGetNewMovies } = apiSlice;
 
 export default apiSlice;
