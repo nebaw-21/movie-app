@@ -10,27 +10,51 @@ import {
   ShareIcon,
 } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { addToFav } from "./Slice/addToFav";
+import UserList from "./userLIst";
 
-// eslint-disable-next-line react/prop-types
-export default function MovieDescription({ id, title, rate, genre, vote, year, duration, description, img }) {
+export default function MovieDescription({
+  id,
+  title,
+  rate,
+  genre,
+  vote,
+  year,
+  duration,
+  description,
+  img,
+}) {
   const dispatch = useDispatch();
   const favoriteMovies = useSelector((state) => state.fav);
-  const isMovieAdded = favoriteMovies.some(movie => movie.id === id);
-  
+  const isMovieAdded = favoriteMovies.some((movie) => movie.id === id);
+
+  const [isUserListOpen, setIsUserListOpen] = useState(false);
+
   const handleAddToFav = () => {
     if (!isMovieAdded) {
       const movieData = {
-        id, title, rate, genre, vote, year, duration, description, img
+        id,
+        title,
+        rate,
+        genre,
+        vote,
+        year,
+        duration,
+        description,
+        img,
       };
       dispatch(addToFav(movieData));
     }
   };
 
-  // const handleShare = () => {
-  //   // Implement sharing functionality here
-  //   alert(`Share ${title}!`);
-  // };
+  const handleShareClick = () => {
+    setIsUserListOpen(true);
+  };
+
+  const closeUserList = () => {
+    setIsUserListOpen(false);
+  };
 
   return (
     <div className="p-4 md:p-10">
@@ -95,16 +119,18 @@ export default function MovieDescription({ id, title, rate, genre, vote, year, d
               HD
             </Button>
             <Button
-              onClick={handleShare}
+              onClick={handleShareClick}
               color="white"
-              className="flex justify-center items-center  gap-2 border border-black md:px-6 py-0 roboto-bold text-sm"
+              className="flex justify-center items-center gap-2 border border-black md:px-6 py-0 roboto-bold text-sm"
             >
-              <ShareIcon className="h-5 w-5 " />
+              <ShareIcon className="h-5 w-5" />
               <span>Share</span>
             </Button>
 
             <div className="flex flex-1 gap-2 ml-4 roboto-bold">
-              <span className="mt-4 md:mt-2 roboto-black">{Math.floor(rate / 2 * 10) / 10}</span>
+              <span className="mt-4 md:mt-2 roboto-black">
+                {Math.floor((rate / 2) * 10) / 10}
+              </span>
               <Rating ratedColor="yellow" value={Math.floor(rate / 2)} />
               <span className="mt-2 ml-3">Based on {vote} Reviews</span>
             </div>
@@ -130,17 +156,19 @@ export default function MovieDescription({ id, title, rate, genre, vote, year, d
             <span>Genre:</span>
             <div className="flex gap-4">
               {Array.isArray(genre) && genre.length > 0 ? (
-                genre.map((gen) => (
-                  <span key={gen.id}>{gen.name}</span>
-                ))
+                genre.map((gen) => <span key={gen.id}>{gen.name}</span>)
               ) : (
                 <span>No genres available</span>
               )}
             </div>
           </div>
-          
         </div>
       </div>
+
+      {/* User List Popup */}
+      {isUserListOpen && (
+        <UserList onClose={closeUserList} />
+      )}
     </div>
   );
 }
