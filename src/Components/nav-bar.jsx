@@ -13,6 +13,9 @@ export default function NavBar() {
   // State to toggle NewMovie component visibility
   const [showNewMovies, setShowNewMovies] = useState(false);
 
+  // Mock data: Number of new movies (replace with dynamic data if available)
+  const newMoviesCount = 2; // Example: 5 new movies available
+
   // Toggle handler for notification button
   const toggleNewMovies = () => {
     setShowNewMovies(!showNewMovies);
@@ -49,13 +52,21 @@ export default function NavBar() {
             </Link>
 
             {/* Notification Button */}
-            <IconButton
-              variant="text"
-              color="white"
-              onClick={toggleNewMovies}
-            >
-              <BellIcon className="h-5 w-5 md:h-6 md:w-6" />
-            </IconButton>
+            <div className="relative">
+              <IconButton
+                variant="text"
+                color="white"
+                onClick={toggleNewMovies}
+              >
+                <BellIcon className="h-5 w-5 md:h-6 md:w-6" />
+              </IconButton>
+              {/* Badge for new movies count */}
+              {newMoviesCount > 0 && (
+                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs text-white">
+                  {newMoviesCount}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Search Bar */}
