@@ -7,6 +7,7 @@ import {
   StarIcon,
   CheckIcon,
   VideoCameraIcon,
+  ShareIcon,
 } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFav } from "./Slice/addToFav";
@@ -25,6 +26,11 @@ export default function MovieDescription({ id, title, rate, genre, vote, year, d
       dispatch(addToFav(movieData));
     }
   };
+
+  // const handleShare = () => {
+  //   // Implement sharing functionality here
+  //   alert(`Share ${title}!`);
+  // };
 
   return (
     <div className="p-4 md:p-10">
@@ -88,13 +94,20 @@ export default function MovieDescription({ id, title, rate, genre, vote, year, d
             <Button color="white" className="border border-black md:px-6 py-0 roboto-bold text-sm">
               HD
             </Button>
+            <Button
+              onClick={handleShare}
+              color="white"
+              className="flex justify-center items-center  gap-2 border border-black md:px-6 py-0 roboto-bold text-sm"
+            >
+              <ShareIcon className="h-5 w-5 " />
+              <span>Share</span>
+            </Button>
 
             <div className="flex flex-1 gap-2 ml-4 roboto-bold">
               <span className="mt-4 md:mt-2 roboto-black">{Math.floor(rate / 2 * 10) / 10}</span>
               <Rating ratedColor="yellow" value={Math.floor(rate / 2)} />
               <span className="mt-2 ml-3">Based on {vote} Reviews</span>
             </div>
-
           </div>
 
           <p className="mt-4 roboto-medium">{description}</p>
@@ -116,7 +129,6 @@ export default function MovieDescription({ id, title, rate, genre, vote, year, d
           <div className="flex mt-4">
             <span>Genre:</span>
             <div className="flex gap-4">
-
               {Array.isArray(genre) && genre.length > 0 ? (
                 genre.map((gen) => (
                   <span key={gen.id}>{gen.name}</span>

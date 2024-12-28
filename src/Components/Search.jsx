@@ -4,7 +4,7 @@ import { Button, Input } from "@material-tailwind/react";
 import { useSearchMoviesQuery } from "./Slice/apiSlice";
 import { setSearchResult } from "./Slice/searchResult"; // Import your action
 
-export default function Search() {
+export default function Search() {  
   // State to hold the search keyword entered by the user
   const [searchTerm, setSearchTerm] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
