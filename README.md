@@ -1,8 +1,29 @@
-# React + Vite
+# Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple movie application built using React and Vite, utilizing the TMDB (The Movie Database) free API to fetch and display movie information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse and search for movies
+- Display movie details such as title, poster, and overview
+- User-friendly interface
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces
+- **Vite**: A fast development server and build tool
+- **JavaScript**: The primary programming language
+- **CSS**: For styling the application
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 12 or higher)
+- npm (Node package manager)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nebaw-21/movie-app.git
