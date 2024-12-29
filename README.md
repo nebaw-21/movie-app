@@ -61,3 +61,6 @@ This project does not have a specified license. Please adhere to the default cop
 
 - [TMDB](https://www.themoviedb.org/) for providing the movie data API.
 - The open-source community for the tools and libraries used in this project.
+
+  ## Report document
+  https://docs.google.com/document/d/1tnHxraHefGCU9Ov9Uj7yQlD3T4PQjZN_C5LObwYW1XI/edit?usp=sharing
